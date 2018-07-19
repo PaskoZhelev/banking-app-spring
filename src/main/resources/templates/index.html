@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+  <head th:replace="fragments/header :: header"></head>
+
+    <body>
+    <nav th:replace="fragments/navigation-after-log :: nav-after-log"></nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="mt-5">United Bank of Programming</h1>
+          <p class="lead">Manage you cards, balances and transactions easily!</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 text-center">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title"><strong>Cards</strong></h3></div>
+          <div class="panel-body">
+              <table th:replace="fragments/cards-table :: cards-table"></table>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCard">Add Card</button>
+            <div th:replace="fragments/add-card-modal :: add-card-modal"></div>
+          </div>
+        </div>
+      </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <span th:replace="fragments/footer :: footer"></span>
+
+  </body>
+
+</html>

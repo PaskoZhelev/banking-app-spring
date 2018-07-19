@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+            <table class="table table-striped text-center" th:fragment="cards-table">
+                <thead th:if="${!#lists.isEmpty(currentUserCards)}">
+                <tr>
+                    <th class="text-center">Card Number</th>
+                    <th class="text-center">Card Balance</th>
+                    <th class="text-center">Currency</th>
+                </tr>
+                </thead>
+                <tbody>
+                <span th:if="${#lists.isEmpty(currentUserCards)}" >You have no cards</span>
+                <tr th:each="card: ${currentUserCards}">
+                    <td th:text="${card.id}" />
+                    <td><strong th:text="${card.cardBalance}"></strong></td>
+                    <td class="text-success"><strong th:text="${card.currency}"></strong></td>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+</body>
+</html>
