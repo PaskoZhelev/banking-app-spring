@@ -10,6 +10,9 @@ import com.pmz.simplebankingapp.repository.CardRepository;
 import com.pmz.simplebankingapp.repository.RoleRepository;
 import com.pmz.simplebankingapp.repository.TransactionRepository;
 import com.pmz.simplebankingapp.repository.UserRepository;
+import com.pmz.simplebankingapp.service.CardService;
+import com.pmz.simplebankingapp.service.RoleService;
+import com.pmz.simplebankingapp.service.TransactionService;
 import com.pmz.simplebankingapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,11 +28,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private RoleRepository roleRepository;
+    private RoleService roleService;
     @Autowired
-    private CardRepository cardRepository;
+    private TransactionService transactionService;
     @Autowired
-    private TransactionRepository transactionRepository;
+    private CardService cardService;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -49,12 +52,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Card> findUserCardsById(long id) {
-        return cardRepository.findCardsByUserId(id);
+        return cardService.findCardsByUserId(id);
     }
 
     @Override
-    public List<Transaction> findUserTransactionsById(long id) {
-        return transactionRepository.findTransactionsByUserId(id);
+    public List<Transaction> findTransactionsByCardId(long id) {
+        return transactionService.findTransactionsByCardId(id);
     }
 
     public User registerUser(UserCreateForm userCreateForm) {
@@ -67,13 +70,12 @@ public class UserServiceImpl implements UserService {
         Set<Role> roles = generateRolesSet();
         user.setRoles(roles);
         user.setCards(new ArrayList<>());
-        user.setTransactions(new ArrayList<>());
 
         return userRepository.save(user);
     }
 
     private Set<Role> generateRolesSet() {
-        Role role = roleRepository.findByRoleName(ROLE_USER);
+        Role role = roleService.findByRoleName(ROLE_USER);
         Set<Role> roles = new HashSet<>();
         roles.add(role);
         return roles;

@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String register() {
+    public String register(@ModelAttribute("registerForm") UserCreateForm registerForm) {
         return "register";
     }
 
@@ -54,9 +54,6 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @GetMapping("/transactions")
-    public String getTransactions() {
-        return "transactions";
-    }
+
 
 }

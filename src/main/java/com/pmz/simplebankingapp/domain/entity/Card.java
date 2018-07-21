@@ -3,6 +3,7 @@ package com.pmz.simplebankingapp.domain.entity;
 import com.pmz.simplebankingapp.domain.enums.Currency;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="cards")
@@ -17,6 +18,13 @@ public class Card {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @OneToMany(
+            mappedBy = "card",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Transaction> transactions;
+
     @Column(name = "card_balance", nullable = false)
     private double cardBalance;
 
@@ -24,8 +32,8 @@ public class Card {
     @Column(name = "currency", nullable = false)
     private Currency currency;
 
-    public Card() {
-    }
+    public Card() { }
+
 
     public Card(User user, double cardBalance, Currency currency) {
         this.user = user;
@@ -63,5 +71,13 @@ public class Card {
 
     public void setCurrency(Currency currency) {
         this.currency = currency;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 }

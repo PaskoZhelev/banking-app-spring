@@ -21,8 +21,11 @@
         <div class="panel panel-default">
           <div class="panel-heading"><h3 class="panel-title"><strong>Card Transactions</strong></h3></div>
           <div class="panel-body">
-              <div th:replace="fragments/cards-table-for-transactions :: cards-table-for-transactions"></div>
-
+              <div th:replace="fragments/transactions-table :: transactions-table"></div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTransaction">
+              <span class="glyphicon glyphicon-transfer"></span> Make Transaction
+            </button>
+            <div th:replace="fragments/add-transaction-modal :: add-transaction-modal"></div>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <div id="addCard" class="modal fade" role="dialog" th:fragment="add-card-modal">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-sm">
 
         <!-- Modal content-->
         <div class="modal-content">
@@ -15,6 +15,7 @@
                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
                     <div class="form-group">
+                        <label>Card Balance</label>
                         <input type="text" class="form-control" id="balance"
                                name="balance" placeholder="Card Balance" th:field="*{cardBalance}" th:errorclass="is-invalid" required>
                     </div>
@@ -26,7 +27,7 @@
                             <option value="pound">Pound</option>
                         </select>
                     </div>
-                    <button id="addBtn" type="submit" class="btn btn-md btn-primary btn-block">Add</button>
+                    <button id="addBtn" type="submit" class="btn btn-md btn-success btn-block">Add</button>
                 </form>
             </div>
             <div class="modal-footer">

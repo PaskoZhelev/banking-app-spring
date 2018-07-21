@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div id="addTransaction" class="modal fade" role="dialog" th:fragment="add-transaction-modal">
+    <div class="modal-dialog modal-md">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Make Transaction</h4>
+            </div>
+            <div class="modal-body">
+                <form th:object="${addTransactionForm}" th:action="@{/add-transaction}" method="post">
+
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+                    <div class="form-group">
+                        <label>IBAN</label>
+                        <input type="text" class="form-control" id="iban"
+                               name="iban" placeholder="Receiver IBAN" th:field="*{iban}" th:errorclass="is-invalid" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Purpose</label>
+                        <textarea class="form-control" id="purpose" rows="3"
+                                  name="purpose" placeholder="Purpose" th:field="*{purpose}" th:errorclass="is-invalid" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Sum</label>
+                        <input type="text" class="form-control" id="sum"
+                               name="sum" placeholder="Sum" th:field="*{sum}" th:errorclass="is-invalid" required>
+                    </div>
+                    <button id="addBtn" type="submit" class="btn btn-md btn-primary btn-block">Make Transaction</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

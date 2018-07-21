@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
-            <table class="table table-striped text-center" th:fragment="cards-table">
+
+        <div th:fragment="cards-table-for-transactions">
+            <div th:if="${insufficientFundsError}">
+                <div class="alert alert-danger">
+                    You do not have enough funds to complete this transaction
+                </div>
+            </div>
+            <div th:if="${successfulTransaction}">
+                <div class="alert alert-success">
+                    The transaction was successful
+                </div>
+            </div>
+            <table class="table table-striped text-center" >
                 <thead th:if="${!#lists.isEmpty(currentUserCards)}">
                 <tr>
                     <th class="text-center">Card Number</th>
                     <th class="text-center">Card Balance</th>
                     <th class="text-center">Currency</th>
+                    <th class="text-center">Transactions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -15,8 +28,10 @@
                     <td th:text="${card.id}" />
                     <td><strong th:text="${card.cardBalance}"></strong></td>
                     <td class="text-success"><strong th:text="${card.currency}"></strong></td>
+                    <td><a th:href="@{/transactions/card/{id}(id=${card.id})}" class="btn btn-primary btn-sm" role="button">See Transactions</a></td>
                 </tr>
                 </tbody>
             </table>
+        </div>
 </body>
 </html>

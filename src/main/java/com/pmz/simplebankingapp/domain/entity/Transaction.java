@@ -10,9 +10,9 @@ public class Transaction {
     @Column(name = "transaction_id")
     private long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "card_id", nullable = false)
+    private Card card;
 
     @Column(name = "iban", nullable = false)
     private String iban;
@@ -23,4 +23,54 @@ public class Transaction {
     @Column(name = "purpose", nullable = false)
     private String purpose;
 
+    public Transaction() { }
+
+
+
+    public Transaction(Card card, String iban, double sum, String purpose) {
+        this.card = card;
+        this.iban = iban;
+        this.sum = sum;
+        this.purpose = purpose;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
+    }
+
+    public double getSum() {
+        return sum;
+    }
+
+    public void setSum(double sum) {
+        this.sum = sum;
+    }
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
 }

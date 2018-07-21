@@ -17,12 +17,13 @@
       </div>
       <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-6 text-center">
+        <div class="col-md-6">
         <div class="panel panel-default">
           <div class="panel-heading"><h3 class="panel-title"><strong>Cards</strong></h3></div>
           <div class="panel-body">
               <table th:replace="fragments/cards-table :: cards-table"></table>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCard">Add Card</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addCard">
+              <span class="glyphicon glyphicon-credit-card"></span> Add Card</button>
             <div th:replace="fragments/add-card-modal :: add-card-modal"></div>
           </div>
         </div>

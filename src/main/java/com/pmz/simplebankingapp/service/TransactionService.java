@@ -8,12 +8,7 @@ import com.pmz.simplebankingapp.forms.UserCreateForm;
 import java.util.List;
 import java.util.Optional;
 
-public interface UserService {
+public interface TransactionService {
 
-    Optional<User> findUserByUsername(String username);
-    Optional<User> findUserByEmail(String email);
-    List<Card> findUserCardsById(long id);
     List<Transaction> findTransactionsByCardId(long id);
-    User registerUser(UserCreateForm userCreateForm);
-    boolean hasValidPassword(User user, String pwd);
 }

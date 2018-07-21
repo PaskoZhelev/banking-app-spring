@@ -1,10 +1,12 @@
 package com.pmz.simplebankingapp.forms;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
+@Component
 public class UserCreateForm {
 
     @NotEmpty

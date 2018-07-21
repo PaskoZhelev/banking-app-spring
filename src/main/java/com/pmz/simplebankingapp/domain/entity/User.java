@@ -36,16 +36,8 @@ public class User {
     )
     private List<Card> cards;
 
-    @OneToMany(
-            mappedBy = "user",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<Transaction> transactions;
 
-    public User() {
-
-    }
+    public User() { }
 
     public User(User user) {
         this.id = user.getId();
@@ -54,7 +46,6 @@ public class User {
         this.email = user.getEmail();
         this.roles = user.getRoles();
         this.cards = user.getCards();
-        this.transactions = user.getTransactions();
     }
 
     public long getId() {
@@ -105,11 +96,4 @@ public class User {
         this.cards = cards;
     }
 
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-    }
 }
